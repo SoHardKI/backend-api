@@ -19,6 +19,7 @@ class CheckUser
     {
         if (isset($request->email) && !is_null($request->email) && isset($request->password) && !is_null($request->password)) {
             $user = \App\User::where(['email' => $request->email])->where(['password' => $request->password])->first();
+
             if ($user) {
                 return $next($request, $user);
             } else {
